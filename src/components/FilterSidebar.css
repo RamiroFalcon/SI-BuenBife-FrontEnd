@@ -1,0 +1,145 @@
+.filter-sidebar {
+  width: 100%;
+}
+
+.filter-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 5rem;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--primary-burgundy);
+}
+
+.filter-icon {
+  color: var(--primary-burgundy);
+}
+
+.filter-divider {
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin: 1.1rem 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.filter-subtitle {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+  border: 1px solid transparent;
+}
+
+.category-item:hover {
+  background-color: #faf7f5;
+}
+
+/* Selected Category Style: Pale pink background and burgundy text */
+.category-item.selected {
+  background-color: var(--primary-burgundy-light);
+  border-color: var(--primary-burgundy-border);
+}
+
+.category-item.selected .category-label {
+  color: var(--primary-burgundy);
+  font-weight: 600;
+}
+
+/* Custom Radio button */
+.radio-container {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.category-radio {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.custom-radio {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border-light);
+  border-radius: 50%;
+  display: inline-block;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+}
+
+.category-item:hover .custom-radio {
+  border-color: var(--primary-burgundy-border);
+}
+
+.category-radio:checked + .custom-radio {
+  border-color: var(--primary-burgundy);
+  background-color: var(--primary-burgundy);
+  box-shadow: inset 0 0 0 3px #ffffff;
+}
+
+.category-label {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  transition: color 0.18s ease;
+}
+
+.filter-footer-info {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-subtle);
+  display: flex;
+  justify-content: center;
+}
+
+.selection-count {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background-color: var(--bg-main);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
