@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  /* Variables de Color Principales */
+  --color-primary: #601018;
+  --color-bg: #FDFBF9;
+  --color-white: #FFFFFF;
+
+  /* Variantes de Color & Acentos */
+  --color-primary-hover: #4c0c13;
+  --color-primary-light: #fbf0f1;
+  --color-primary-border: #f2d4d7;
+  
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #57534E;
+  --color-text-muted: #8C857E;
+  
+  --color-border-subtle: #EFECE6;
+  --color-border-light: #E7E3DC;
+
+  /* Retrocompatibilidad con variables del sistema */
+  --bg-main: var(--color-bg);
+  --bg-card: var(--color-white);
+  --primary-burgundy: var(--color-primary);
+  --primary-burgundy-hover: var(--color-primary-hover);
+  --primary-burgundy-light: var(--color-primary-light);
+  --primary-burgundy-border: var(--color-primary-border);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --border-subtle: var(--color-border-subtle);
+  --border-light: var(--color-border-light);
+
+  /* Sombras y Elevaciones */
+  --shadow-subtle: 0 4px 18px rgba(35, 20, 15, 0.04);
+  --shadow-hover: 0 10px 25px rgba(96, 16, 24, 0.08);
+  --shadow-panel: 0 4px 24px rgba(0, 0, 0, 0.05);
+
+  /* Tipografías */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Bordes Redondeados */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+}
+
+/* Reset Global */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+/* Scrollbar Minimalista */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8d4cd;
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bfb9b0;
+}

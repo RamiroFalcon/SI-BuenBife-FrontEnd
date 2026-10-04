@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import styles from './Login.module.css'
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -37,16 +38,18 @@ export default function Login() {
   }
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <h2>Iniciar Sesión</h2>
-        <p className="login-subtitle">Sistema de Control de Acceso</p>
+    <div className={styles.loginContainer}>
+      <div className={styles.loginCard}>
+        <h2 className={styles.loginTitle}>Iniciar Sesión</h2>
+        <p className={styles.loginSubtitle}>Sistema de Control de Acceso</p>
 
-        {error && <div className="login-error">{error}</div>}
+        {error && <div className={styles.loginError}>{error}</div>}
 
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-group">
-            <label htmlFor="username">Usuario o Correo Electrónico</label>
+        <form onSubmit={handleSubmit} className={styles.loginForm}>
+          <div className={styles.formGroup}>
+            <label htmlFor="username" className={styles.formLabel}>
+              Usuario o Correo Electrónico
+            </label>
             <input
               id="username"
               type="text"
@@ -55,12 +58,15 @@ export default function Login() {
               onChange={handleChange}
               placeholder="Ingrese su usuario o correo"
               autoComplete="username"
+              className={styles.formInput}
               required
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Contraseña</label>
+          <div className={styles.formGroup}>
+            <label htmlFor="password" className={styles.formLabel}>
+              Contraseña
+            </label>
             <input
               id="password"
               type="password"
@@ -69,11 +75,16 @@ export default function Login() {
               onChange={handleChange}
               placeholder="Ingrese su contraseña"
               autoComplete="current-password"
+              className={styles.formInput}
               required
             />
           </div>
 
-          <button type="submit" className="login-button" disabled={isLoading}>
+          <button
+            type="submit"
+            className={styles.loginButton}
+            disabled={isLoading}
+          >
             {isLoading ? 'Ingresando...' : 'Iniciar Sesión'}
           </button>
         </form>

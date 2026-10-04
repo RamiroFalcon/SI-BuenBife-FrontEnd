@@ -4,7 +4,7 @@ import FilterSidebar from '../components/FilterSidebar'
 import ProductGrid from '../components/ProductGrid'
 import CartSummarySidebar from '../components/CartSummarySidebar'
 import { MOCK_PRODUCTS, CATEGORIES } from '../services/productsData'
-import './Home.css'
+import styles from './Home.module.css'
 
 export default function Home({
   cart: parentCart,
@@ -109,7 +109,7 @@ export default function Home({
   }
 
   return (
-    <div className="home-layout">
+    <div className={styles.homeLayout}>
       {/* Top Navigation */}
       <Navbar
         searchQuery={searchQuery}
@@ -118,9 +118,9 @@ export default function Home({
       />
 
       {/* Main 3-column Layout: 20% Sidebar, 55% Grid, 25% Cart */}
-      <div className="home-container">
+      <div className={styles.homeContainer}>
         {/* Left Column: Filter Sidebar (20%) */}
-        <div className="home-col-filters">
+        <div className={styles.homeColFilters}>
           <FilterSidebar
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
@@ -129,7 +129,7 @@ export default function Home({
         </div>
 
         {/* Center Column: Product Grid (55%) */}
-        <main className="home-col-products">
+        <main className={styles.homeColProducts}>
           <ProductGrid
             products={filteredProducts}
             cart={cart}
@@ -140,7 +140,7 @@ export default function Home({
         </main>
 
         {/* Right Column: Cart Summary (25%) */}
-        <div className="home-col-cart">
+        <div className={styles.homeColCart}>
           <CartSummarySidebar
             cartItems={cartItems}
             onIncrement={handleIncrement}

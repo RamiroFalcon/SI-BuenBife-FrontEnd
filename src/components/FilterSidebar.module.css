@@ -1,61 +1,61 @@
-.filter-sidebar {
+.filterSidebar {
   width: 100%;
 }
 
-.filter-card {
-  background-color: var(--bg-card);
+.filterCard {
+  background-color: var(--color-white);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   box-shadow: var(--shadow-subtle);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--color-border-subtle);
   position: sticky;
   top: 5rem;
 }
 
-.filter-header {
+.filterHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.filter-title {
+.filterTitle {
   font-family: var(--font-serif);
   font-size: 1.45rem;
   font-weight: 700;
-  color: var(--primary-burgundy);
+  color: var(--color-primary);
 }
 
-.filter-icon {
-  color: var(--primary-burgundy);
+.filterIcon {
+  color: var(--color-primary);
 }
 
-.filter-divider {
+.filterDivider {
   height: 1px;
-  background-color: var(--border-subtle);
+  background-color: var(--color-border-subtle);
   margin: 1.1rem 0;
 }
 
-.filter-group {
+.filterGroup {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
 
-.filter-subtitle {
+.filterSubtitle {
   font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
-.category-list {
+.categoryList {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
-.category-item {
+.categoryItem {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -67,23 +67,23 @@
   border: 1px solid transparent;
 }
 
-.category-item:hover {
+.categoryItem:hover {
   background-color: #faf7f5;
 }
 
 /* Selected Category Style: Pale pink background and burgundy text */
-.category-item.selected {
-  background-color: var(--primary-burgundy-light);
-  border-color: var(--primary-burgundy-border);
+.categoryItem.selected {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-border);
 }
 
-.category-item.selected .category-label {
-  color: var(--primary-burgundy);
+.categoryItem.selected .categoryLabel {
+  color: var(--color-primary);
   font-weight: 600;
 }
 
 /* Custom Radio button */
-.radio-container {
+.radioContainer {
   position: relative;
   width: 18px;
   height: 18px;
@@ -93,7 +93,7 @@
   flex-shrink: 0;
 }
 
-.category-radio {
+.categoryRadio {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -102,44 +102,44 @@
   margin: 0;
 }
 
-.custom-radio {
+.customRadio {
   width: 16px;
   height: 16px;
-  border: 2px solid var(--border-light);
+  border: 2px solid var(--color-border-light);
   border-radius: 50%;
   display: inline-block;
   transition: all 0.2s ease;
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
-.category-item:hover .custom-radio {
-  border-color: var(--primary-burgundy-border);
+.categoryItem:hover .customRadio {
+  border-color: var(--color-primary-border);
 }
 
-.category-radio:checked + .custom-radio {
-  border-color: var(--primary-burgundy);
-  background-color: var(--primary-burgundy);
-  box-shadow: inset 0 0 0 3px #ffffff;
+.categoryRadio:checked + .customRadio {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  box-shadow: inset 0 0 0 3px var(--color-white);
 }
 
-.category-label {
+.categoryLabel {
   font-size: 0.92rem;
-  color: var(--text-secondary);
+  color: var(--color-text-secondary);
   transition: color 0.18s ease;
 }
 
-.filter-footer-info {
+.filterFooterInfo {
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px dashed var(--border-subtle);
+  border-top: 1px dashed var(--color-border-subtle);
   display: flex;
   justify-content: center;
 }
 
-.selection-count {
+.selectionCount {
   font-size: 0.78rem;
-  color: var(--text-muted);
-  background-color: var(--bg-main);
+  color: var(--color-text-muted);
+  background-color: var(--color-bg);
   padding: 0.3rem 0.75rem;
   border-radius: var(--radius-pill);
 }

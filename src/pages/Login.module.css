@@ -1,0 +1,109 @@
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: var(--color-bg);
+}
+
+.loginCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginTitle {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.loginSubtitle {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.loginError {
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  font-size: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.formLabel {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.formInput:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-primary-border);
+  box-shadow: 0 0 0 3px rgba(96, 16, 24, 0.08);
+}
+
+.loginButton {
+  margin-top: 0.75rem;
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(96, 16, 24, 0.18);
+}
+
+.loginButton:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(96, 16, 24, 0.25);
+}
+
+.loginButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

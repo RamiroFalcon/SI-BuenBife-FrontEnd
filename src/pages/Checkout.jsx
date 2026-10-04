@@ -5,7 +5,7 @@ import CheckoutAddress from '../components/CheckoutAddress'
 import CheckoutDateTime from '../components/CheckoutDateTime'
 import CheckoutPayment from '../components/CheckoutPayment'
 import { MapPin, Calendar, CreditCard, CheckCircle2, ShoppingBag } from 'lucide-react'
-import './Checkout.css'
+import styles from './Checkout.module.css'
 
 export default function Checkout({
   cartItems = [],
@@ -78,7 +78,7 @@ export default function Checkout({
   ]
 
   return (
-    <div className="checkout-page-layout">
+    <div className={styles.checkoutPageLayout}>
       {/* Navbar with brand & profile */}
       <Navbar
         searchQuery=""
@@ -86,11 +86,11 @@ export default function Checkout({
         cartCount={cartItems.reduce((acc, i) => acc + i.quantity, 0)}
       />
 
-      <div className="checkout-main-container">
+      <div className={styles.checkoutMainContainer}>
         {/* Step Indicator / Stepper Breadcrumb */}
         {currentStep <= 3 && (
-          <div className="checkout-stepper-container">
-            <div className="checkout-stepper">
+          <div className={styles.checkoutStepperContainer}>
+            <div className={styles.checkoutStepper}>
               {stepsList.map((st) => {
                 const IconComponent = st.icon
                 const isActive = currentStep === st.number
@@ -98,19 +98,19 @@ export default function Checkout({
                 return (
                   <div
                     key={st.number}
-                    className={`step-item ${isActive ? 'active' : ''} ${
-                      isCompleted ? 'completed' : ''
+                    className={`${styles.stepItem} ${isActive ? styles.active : ''} ${
+                      isCompleted ? styles.completed : ''
                     }`}
                   >
-                    <div className="step-circle">
+                    <div className={styles.stepCircle}>
                       {isCompleted ? (
                         <CheckCircle2 size={16} />
                       ) : (
                         <IconComponent size={16} />
                       )}
                     </div>
-                    <span className="step-text">{st.label}</span>
-                    {st.number < 3 && <div className="step-line" />}
+                    <span className={styles.stepText}>{st.label}</span>
+                    {st.number < 3 && <div className={styles.stepLine} />}
                   </div>
                 )
               })}
@@ -119,9 +119,9 @@ export default function Checkout({
         )}
 
         {/* 2-Column Content Layout: Left is Form Step, Right is CartSummary */}
-        <div className="checkout-content-grid">
+        <div className={styles.checkoutContentGrid}>
           {/* Left Column: Active Step Card */}
-          <section className="checkout-form-column">
+          <section className={styles.checkoutFormColumn}>
             {currentStep === 1 && (
               <CheckoutAddress
                 addressData={addressData}
@@ -153,21 +153,21 @@ export default function Checkout({
             )}
 
             {currentStep === 4 && (
-              <div className="checkout-card success-card">
-                <div className="success-icon-wrapper">
-                  <CheckCircle2 size={54} className="success-check-icon" />
+              <div className={styles.successCard}>
+                <div className={styles.successIconWrapper}>
+                  <CheckCircle2 size={54} className={styles.successCheckIcon} />
                 </div>
-                <h2 className="checkout-card-title success-title">
+                <h2 className={styles.successTitle}>
                   ¡Pedido Confirmado con Éxito!
                 </h2>
-                <p className="checkout-card-subtitle">
+                <p className={styles.successSubtitle}>
                   Orden #{orderSummary?.orderNumber} registrada. Recibirás todos los detalles por correo.
                 </p>
 
-                <div className="success-order-details">
-                  <div className="detail-item">
-                    <span className="detail-label">Domicilio de entrega:</span>
-                    <strong className="detail-value">
+                <div className={styles.successOrderDetails}>
+                  <div className={styles.detailItem}>
+                    <span className={styles.detailLabel}>Domicilio de entrega:</span>
+                    <strong className={styles.detailValue}>
                       {orderSummary?.address.street} {orderSummary?.address.number}
                       {orderSummary?.address.isBis ? ' Bis' : ''}
                       {orderSummary?.address.floor ? ` - Piso ${orderSummary?.address.floor}` : ''}
@@ -175,18 +175,18 @@ export default function Checkout({
                     </strong>
                   </div>
 
-                  <div className="detail-item">
-                    <span className="detail-label">Medio de Pago:</span>
-                    <strong className="detail-value" style={{ textTransform: 'capitalize' }}>
+                  <div className={styles.detailItem}>
+                    <span className={styles.detailLabel}>Medio de Pago:</span>
+                    <strong className={styles.detailValue} style={{ textTransform: 'capitalize' }}>
                       {orderSummary?.paymentMethod === 'mercadopago' ? 'Mercado Pago' : orderSummary?.paymentMethod}
                     </strong>
                   </div>
                 </div>
 
-                <div className="checkout-actions-row" style={{ justifyContent: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <button
                     type="button"
-                    className="btn-burgundy"
+                    className={styles.btnBurgundy}
                     onClick={onBackToShop}
                   >
                     <ShoppingBag size={18} />
@@ -198,7 +198,7 @@ export default function Checkout({
           </section>
 
           {/* Right Column: Always Visible Cart Summary Sidebar */}
-          <aside className="checkout-summary-column">
+          <aside className={styles.checkoutSummaryColumn}>
             <CartSummarySidebar
               cartItems={cartItems}
               onIncrement={onIncrement}

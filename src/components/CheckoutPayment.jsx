@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ArrowRight, ArrowLeft, CreditCard, ShieldCheck, ExternalLink, Info } from 'lucide-react'
-import './CheckoutStyles.css'
+import styles from './CheckoutPayment.module.css'
 
 export default function CheckoutPayment({
   paymentMethod = 'mercadopago',
@@ -34,19 +34,19 @@ export default function CheckoutPayment({
   }
 
   return (
-    <div className="checkout-flow-container">
+    <div className={styles.checkoutFlowContainer}>
       {/* Centered White Card */}
-      <div className="checkout-card">
-        <div className="checkout-card-header">
-          <h2 className="checkout-card-title">Método de pago</h2>
+      <div className={styles.checkoutCard}>
+        <div className={styles.checkoutCardHeader}>
+          <h2 className={styles.checkoutCardTitle}>Método de pago</h2>
         </div>
 
-        <form onSubmit={handleSubmit} className="checkout-form">
+        <form onSubmit={handleSubmit} className={styles.checkoutForm}>
           {/* Dropdown Method Selector */}
-          <div className="form-group">
-            <label htmlFor="paymentMethod" className="checkout-label">
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                <CreditCard size={15} style={{ color: 'var(--primary-burgundy)' }} />
+          <div className={styles.formGroup}>
+            <label htmlFor="paymentMethod" className={styles.checkoutLabel}>
+              <span className={styles.labelIconText}>
+                <CreditCard size={15} className={styles.labelIcon} />
                 Seleccione medio de pago *
               </span>
             </label>
@@ -55,7 +55,7 @@ export default function CheckoutPayment({
               name="paymentMethod"
               value={selectedMethod}
               onChange={handleChange}
-              className="checkout-select"
+              className={styles.checkoutSelect}
               required
             >
               {paymentOptions.map((opt) => (
@@ -68,26 +68,26 @@ export default function CheckoutPayment({
 
           {/* Highlighted Info Box for Mercado Pago */}
           {selectedMethod === 'mercadopago' ? (
-            <div className="checkout-info-box">
-              <ExternalLink size={20} className="checkout-info-icon" />
-              <p className="checkout-info-text">
+            <div className={styles.checkoutInfoBox}>
+              <ExternalLink size={20} className={styles.checkoutInfoIcon} />
+              <p className={styles.checkoutInfoText}>
                 Serás redirigido a Mercado Pago para completar tu pago de forma segura.
               </p>
             </div>
           ) : (
-            <div className="checkout-info-box">
-              <Info size={20} className="checkout-info-icon" />
-              <p className="checkout-info-text">
+            <div className={styles.checkoutInfoBox}>
+              <Info size={20} className={styles.checkoutInfoIcon} />
+              <p className={styles.checkoutInfoText}>
                 Procesaremos tu solicitud con los más estrictos estándares de seguridad y te enviaremos la confirmación inmediata por email.
               </p>
             </div>
           )}
 
           {/* Action Buttons: Volver & Ir a pago */}
-          <div className="checkout-actions-row">
+          <div className={styles.checkoutActionsRow}>
             <button
               type="button"
-              className="btn-outline"
+              className={styles.btnOutline}
               onClick={onBack}
               disabled={isProcessing}
             >
@@ -97,7 +97,7 @@ export default function CheckoutPayment({
 
             <button
               type="submit"
-              className="btn-burgundy"
+              className={styles.btnBurgundy}
               disabled={isProcessing}
             >
               <span>{isProcessing ? 'Procesando...' : 'Ir a pago'}</span>
@@ -106,8 +106,8 @@ export default function CheckoutPayment({
           </div>
 
           {/* Bottom Security Note */}
-          <div className="checkout-security-note">
-            <ShieldCheck size={16} className="checkout-security-icon" />
+          <div className={styles.checkoutSecurityNote}>
+            <ShieldCheck size={16} className={styles.checkoutSecurityIcon} />
             <span>Pago 100% seguro y encriptado</span>
           </div>
         </form>

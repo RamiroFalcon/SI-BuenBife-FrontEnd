@@ -1,43 +1,43 @@
 import React from 'react'
 import { Search, User, ShoppingBag } from 'lucide-react'
-import './Navbar.css'
+import styles from './Navbar.module.css'
 
 export default function Navbar({ searchQuery, setSearchQuery, cartCount = 0 }) {
   return (
-    <header className="navbar">
-      <div className="navbar-container">
+    <header className={styles.navbar}>
+      <div className={styles.navbarContainer}>
         {/* Brand Logo */}
-        <div className="navbar-brand">
-          <span className="navbar-logo-text">BuenBife</span>
-          <span className="navbar-tagline">Carnicería & Selección</span>
+        <div className={styles.navbarBrand}>
+          <span className={styles.navbarLogoText}>BuenBife</span>
+          <span className={styles.navbarTagline}>Carnicería & Selección</span>
         </div>
 
         {/* Right Action Icons */}
-        <div className="navbar-actions">
+        <div className={styles.navbarActions}>
           {/* Search Box */}
-          <div className="search-wrapper">
-            <Search className="search-icon" size={18} />
+          <div className={styles.searchWrapper}>
+            <Search className={styles.searchIcon} size={18} />
             <input
               type="text"
               placeholder="Buscar corte, vino o achuras..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="search-input"
+              className={styles.searchInput}
             />
           </div>
 
           {/* User profile */}
-          <div className="user-profile" title="Perfil de usuario">
-            <div className="user-avatar">
+          <div className={styles.userProfile} title="Perfil de usuario">
+            <div className={styles.userAvatar}>
               <User size={18} />
             </div>
-            <span className="user-name">John Doe</span>
+            <span className={styles.userName}>John Doe</span>
           </div>
 
           {/* Cart Icon indicator */}
-          <div className="cart-badge-button" title="Carrito de compras">
-            <ShoppingBag size={20} className="cart-icon" />
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          <div className={styles.cartBadgeButton} title="Carrito de compras">
+            <ShoppingBag size={20} className={styles.cartIcon} />
+            {cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
           </div>
         </div>
       </div>

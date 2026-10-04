@@ -1,7 +1,7 @@
 import React from 'react'
 import { SlidersHorizontal } from 'lucide-react'
 import { CATEGORIES } from '../services/productsData'
-import './FilterSidebar.css'
+import styles from './FilterSidebar.module.css'
 
 export default function FilterSidebar({
   selectedCategory,
@@ -9,40 +9,40 @@ export default function FilterSidebar({
   totalItemsCount = 0,
 }) {
   return (
-    <aside className="filter-sidebar">
-      <div className="filter-card">
+    <aside className={styles.filterSidebar}>
+      <div className={styles.filterCard}>
         {/* Header */}
-        <div className="filter-header">
-          <h2 className="filter-title">Filtros</h2>
-          <SlidersHorizontal size={18} className="filter-icon" />
+        <div className={styles.filterHeader}>
+          <h2 className={styles.filterTitle}>Filtros</h2>
+          <SlidersHorizontal size={18} className={styles.filterIcon} />
         </div>
 
-        <div className="filter-divider" />
+        <div className={styles.filterDivider} />
 
         {/* Categories Section */}
-        <div className="filter-group">
-          <span className="filter-subtitle">Categorías</span>
+        <div className={styles.filterGroup}>
+          <span className={styles.filterSubtitle}>Categorías</span>
 
-          <div className="category-list">
+          <div className={styles.categoryList}>
             {CATEGORIES.map((cat) => {
               const isSelected = selectedCategory === cat.id
               return (
                 <label
                   key={cat.id}
-                  className={`category-item ${isSelected ? 'selected' : ''}`}
+                  className={`${styles.categoryItem} ${isSelected ? styles.selected : ''}`}
                 >
-                  <div className="radio-container">
+                  <div className={styles.radioContainer}>
                     <input
                       type="radio"
                       name="product-category"
                       value={cat.id}
                       checked={isSelected}
                       onChange={() => onSelectCategory(cat.id)}
-                      className="category-radio"
+                      className={styles.categoryRadio}
                     />
-                    <span className="custom-radio" />
+                    <span className={styles.customRadio} />
                   </div>
-                  <span className="category-label">{cat.label}</span>
+                  <span className={styles.categoryLabel}>{cat.label}</span>
                 </label>
               )
             })}
@@ -50,8 +50,8 @@ export default function FilterSidebar({
         </div>
 
         {/* Extra info badge */}
-        <div className="filter-footer-info">
-          <span className="selection-count">
+        <div className={styles.filterFooterInfo}>
+          <span className={styles.selectionCount}>
             {totalItemsCount} {totalItemsCount === 1 ? 'corte disponible' : 'cortes disponibles'}
           </span>
         </div>

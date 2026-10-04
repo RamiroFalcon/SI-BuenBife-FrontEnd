@@ -1,6 +1,6 @@
 import React from 'react'
 import { Plus, Minus } from 'lucide-react'
-import './ProductCard.css'
+import styles from './ProductCard.module.css'
 
 export default function ProductCard({
   product,
@@ -19,47 +19,47 @@ export default function ProductCard({
   const isLowStock = stock <= 8
 
   return (
-    <article className="product-card">
+    <article className={styles.productCard}>
       {/* Top Image & Badge */}
-      <div className="product-media">
-        <span className="product-badge">{categoryLabel}</span>
+      <div className={styles.productMedia}>
+        <span className={styles.productBadge}>{categoryLabel}</span>
         <img
           src={image}
           alt={name}
-          className="product-image"
+          className={styles.productImage}
           loading="lazy"
         />
       </div>
 
       {/* Content */}
-      <div className="product-info">
-        <h3 className="product-title" title={name}>
+      <div className={styles.productInfo}>
+        <h3 className={styles.productTitle} title={name}>
           {name}
         </h3>
         
         {description && (
-          <p className="product-description">{description}</p>
+          <p className={styles.productDescription}>{description}</p>
         )}
 
-        <div className="product-meta">
+        <div className={styles.productMeta}>
           {/* Price */}
-          <div className="product-pricing">
-            <span className="product-price">{formattedPrice}</span>
-            <span className="product-unit">/ {unit}</span>
+          <div className={styles.productPricing}>
+            <span className={styles.productPrice}>{formattedPrice}</span>
+            <span className={styles.productUnit}>/ {unit}</span>
           </div>
 
           {/* Stock in subtle grey */}
-          <span className={`product-stock ${isLowStock ? 'stock-low' : ''}`}>
+          <span className={`${styles.productStock} ${isLowStock ? styles.stockLow : ''}`}>
             {stock > 0 ? `Stock: ${stock} ${unit} disp.` : 'Agotado'}
           </span>
         </div>
 
         {/* Pill-shaped Quantity Control */}
-        <div className="product-actions">
-          <div className={`quantity-pill ${quantity > 0 ? 'active' : ''}`}>
+        <div className={styles.productActions}>
+          <div className={`${styles.quantityPill} ${quantity > 0 ? styles.active : ''}`}>
             <button
               type="button"
-              className="pill-button"
+              className={styles.pillButton}
               onClick={() => onDecrement(product.id)}
               disabled={quantity === 0}
               aria-label={`Disminuir cantidad de ${name}`}
@@ -67,11 +67,11 @@ export default function ProductCard({
               <Minus size={15} />
             </button>
 
-            <span className="pill-quantity">{quantity}</span>
+            <span className={styles.pillQuantity}>{quantity}</span>
 
             <button
               type="button"
-              className="pill-button"
+              className={styles.pillButton}
               onClick={() => onIncrement(product.id)}
               disabled={quantity >= stock}
               aria-label={`Aumentar cantidad de ${name}`}

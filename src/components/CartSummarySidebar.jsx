@@ -1,6 +1,6 @@
 import React from 'react'
 import { ShoppingBag, ArrowRight, Trash2, Plus, Minus, Truck } from 'lucide-react'
-import './CartSummarySidebar.css'
+import styles from './CartSummarySidebar.module.css'
 
 export default function CartSummarySidebar({
   cartItems = [],
@@ -30,35 +30,35 @@ export default function CartSummarySidebar({
     }).format(val)
 
   return (
-    <aside className="cart-sidebar">
-      <div className="cart-card">
+    <aside className={styles.cartSidebar}>
+      <div className={styles.cartCard}>
         {/* Header */}
-        <div className="cart-header">
-          <div className="cart-title-wrapper">
-            <ShoppingBag size={20} className="cart-header-icon" />
-            <h2 className="cart-title">Tu Pedido</h2>
+        <div className={styles.cartHeader}>
+          <div className={styles.cartTitleWrapper}>
+            <ShoppingBag size={20} className={styles.cartHeaderIcon} />
+            <h2 className={styles.cartTitle}>Tu Pedido</h2>
           </div>
-          <span className="cart-items-pill">
+          <span className={styles.cartItemsPill}>
             {totalCount} {totalCount === 1 ? 'ítem' : 'ítems'}
           </span>
         </div>
 
-        <div className="cart-divider" />
+        <div className={styles.cartDivider} />
 
         {/* List of items */}
-        <div className="cart-items-container">
+        <div className={styles.cartItemsContainer}>
           {cartItems.length > 0 ? (
-            <ul className="cart-items-list">
+            <ul className={styles.cartItemsList}>
               {cartItems.map(({ product, quantity }) => (
-                <li key={product.id} className="cart-item">
-                  <div className="cart-item-header">
-                    <span className="cart-item-name" title={product.name}>
+                <li key={product.id} className={styles.cartItem}>
+                  <div className={styles.cartItemHeader}>
+                    <span className={styles.cartItemName} title={product.name}>
                       {product.name}
                     </span>
                     {onRemove && (
                       <button
                         type="button"
-                        className="cart-item-remove"
+                        className={styles.cartItemRemove}
                         onClick={() => onRemove(product.id)}
                         title="Quitar producto"
                       >
@@ -67,21 +67,21 @@ export default function CartSummarySidebar({
                     )}
                   </div>
 
-                  <div className="cart-item-footer">
-                    <div className="cart-item-qty-control">
+                  <div className={styles.cartItemFooter}>
+                    <div className={styles.cartItemQtyControl}>
                       <button
                         type="button"
-                        className="cart-qty-btn"
+                        className={styles.cartQtyBtn}
                         onClick={() => onDecrement && onDecrement(product.id)}
                         disabled={!onDecrement}
                         aria-label="Restar uno"
                       >
                         <Minus size={12} />
                       </button>
-                      <span className="cart-qty-val">{quantity}</span>
+                      <span className={styles.cartQtyVal}>{quantity}</span>
                       <button
                         type="button"
-                        className="cart-qty-btn"
+                        className={styles.cartQtyBtn}
                         onClick={() => onIncrement && onIncrement(product.id)}
                         disabled={!onIncrement || quantity >= product.stock}
                         aria-label="Sumar uno"
@@ -90,11 +90,11 @@ export default function CartSummarySidebar({
                       </button>
                     </div>
 
-                    <div className="cart-item-price-block">
-                      <span className="cart-item-subtotal">
+                    <div className={styles.cartItemPriceBlock}>
+                      <span className={styles.cartItemSubtotal}>
                         {formatPrice(product.price * quantity)}
                       </span>
-                      <span className="cart-item-unitprice">
+                      <span className={styles.cartItemUnitprice}>
                         ({formatPrice(product.price)} c/u)
                       </span>
                     </div>
@@ -103,12 +103,12 @@ export default function CartSummarySidebar({
               ))}
             </ul>
           ) : (
-            <div className="cart-empty-state">
-              <div className="cart-empty-circle">
-                <ShoppingBag size={28} className="cart-empty-icon" />
+            <div className={styles.cartEmptyState}>
+              <div className={styles.cartEmptyCircle}>
+                <ShoppingBag size={28} className={styles.cartEmptyIcon} />
               </div>
-              <p className="cart-empty-text">Tu carrito está vacío</p>
-              <span className="cart-empty-sub">
+              <p className={styles.cartEmptyText}>Tu carrito está vacío</p>
+              <span className={styles.cartEmptySub}>
                 Agrega cortes de carne seleccionados desde el catálogo.
               </span>
             </div>
@@ -116,36 +116,36 @@ export default function CartSummarySidebar({
         </div>
 
         {/* Resumen / Bloque resaltado Total */}
-        <div className="cart-summary-block">
+        <div className={styles.cartSummaryBlock}>
           {showBreakdown && cartItems.length > 0 && (
-            <div className="cart-breakdown-details">
-              <div className="breakdown-row">
-                <span className="breakdown-label">Subtotal de productos:</span>
-                <span className="breakdown-val">{formatPrice(subtotal)}</span>
+            <div className={styles.cartBreakdownDetails}>
+              <div className={styles.breakdownRow}>
+                <span className={styles.breakdownLabel}>Subtotal de productos:</span>
+                <span className={styles.breakdownVal}>{formatPrice(subtotal)}</span>
               </div>
-              <div className="breakdown-row">
-                <span className="breakdown-label">
-                  <Truck size={13} className="inline-truck-icon" /> Costo de envío:
+              <div className={styles.breakdownRow}>
+                <span className={styles.breakdownLabel}>
+                  <Truck size={13} className={styles.inlineTruckIcon} /> Costo de envío:
                 </span>
-                <span className="breakdown-val">{formatPrice(effectiveShipping)}</span>
+                <span className={styles.breakdownVal}>{formatPrice(effectiveShipping)}</span>
               </div>
             </div>
           )}
 
-          <div className="total-highlight-box">
-            <span className="total-label">TOTAL HASTA EL MOMENTO</span>
-            <span className="total-value">{formatPrice(totalAmount)}</span>
+          <div className={styles.totalHighlightBox}>
+            <span className={styles.totalLabel}>TOTAL HASTA EL MOMENTO</span>
+            <span className={styles.totalValue}>{formatPrice(totalAmount)}</span>
           </div>
 
           {!isCheckoutMode && (
             <button
               type="button"
-              className="go-to-cart-button"
+              className={styles.goToCartButton}
               onClick={onGoToCart}
               disabled={cartItems.length === 0}
             >
               <span>Ir a carrito</span>
-              <ArrowRight size={18} className="cart-btn-arrow" />
+              <ArrowRight size={18} className={styles.cartBtnArrow} />
             </button>
           )}
         </div>

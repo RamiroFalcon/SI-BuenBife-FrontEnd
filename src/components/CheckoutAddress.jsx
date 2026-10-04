@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { ArrowRight, ArrowLeft, Truck, MapPin } from 'lucide-react'
-import './CheckoutStyles.css'
+import { ArrowRight, ArrowLeft, Truck } from 'lucide-react'
+import styles from './CheckoutAddress.module.css'
 
 export default function CheckoutAddress({
   addressData,
@@ -60,16 +60,16 @@ export default function CheckoutAddress({
   }
 
   return (
-    <div className="checkout-flow-container">
+    <div className={styles.checkoutFlowContainer}>
       {/* Outside Card: Small metadata with shipping cost and total */}
-      <div className="checkout-top-meta-info">
-        <div className="meta-shipping">
+      <div className={styles.checkoutTopMetaInfo}>
+        <div className={styles.metaShipping}>
           <Truck size={15} />
           <span>
             Costo de envío: <strong>{formatPrice(shippingCost)}</strong>
           </span>
         </div>
-        <div className="meta-total">
+        <div className={styles.metaTotal}>
           <span>
             Total a pagar: <strong>{formatPrice(totalAmount)}</strong>
           </span>
@@ -77,16 +77,16 @@ export default function CheckoutAddress({
       </div>
 
       {/* Centered White Card */}
-      <div className="checkout-card">
-        <div className="checkout-card-header">
-          <h2 className="checkout-card-title">Ingrese domicilio para entrega</h2>
+      <div className={styles.checkoutCard}>
+        <div className={styles.checkoutCardHeader}>
+          <h2 className={styles.checkoutCardTitle}>Ingrese domicilio para entrega</h2>
         </div>
 
-        <form onSubmit={handleSubmit} className="checkout-form">
+        <form onSubmit={handleSubmit} className={styles.checkoutForm}>
           {/* Row 1: Calle y Nro */}
-          <div className="form-row">
-            <div className="form-group col-8">
-              <label htmlFor="street" className="checkout-label">
+          <div className={styles.formRow}>
+            <div className={`${styles.formGroup} ${styles.col8}`}>
+              <label htmlFor="street" className={styles.checkoutLabel}>
                 Calle *
               </label>
               <input
@@ -96,14 +96,14 @@ export default function CheckoutAddress({
                 value={formData.street}
                 onChange={handleChange}
                 placeholder="Ej. Av. del Libertador"
-                className={`checkout-input ${errors.street ? 'input-error' : ''}`}
+                className={`${styles.checkoutInput} ${errors.street ? styles.inputError : ''}`}
                 autoComplete="street-address"
               />
-              {errors.street && <span className="field-error-msg">{errors.street}</span>}
+              {errors.street && <span className={styles.fieldErrorMsg}>{errors.street}</span>}
             </div>
 
-            <div className="form-group col-4">
-              <label htmlFor="number" className="checkout-label">
+            <div className={`${styles.formGroup} ${styles.col4}`}>
+              <label htmlFor="number" className={styles.checkoutLabel}>
                 Nro *
               </label>
               <input
@@ -113,31 +113,31 @@ export default function CheckoutAddress({
                 value={formData.number}
                 onChange={handleChange}
                 placeholder="Ej. 1420"
-                className={`checkout-input ${errors.number ? 'input-error' : ''}`}
+                className={`${styles.checkoutInput} ${errors.number ? styles.inputError : ''}`}
               />
-              {errors.number && <span className="field-error-msg">{errors.number}</span>}
+              {errors.number && <span className={styles.fieldErrorMsg}>{errors.number}</span>}
             </div>
           </div>
 
           {/* Checkbox Bis */}
-          <div className="form-group">
-            <label className="checkout-checkbox-label">
+          <div className={styles.formGroup}>
+            <label className={styles.checkoutCheckboxLabel}>
               <input
                 type="checkbox"
                 name="isBis"
                 checked={formData.isBis}
                 onChange={handleChange}
-                className="checkout-checkbox-input"
+                className={styles.checkoutCheckboxInput}
               />
               <span>Indicar numeración 'Bis'</span>
             </label>
           </div>
 
           {/* Row 2: Piso y Depto (Opcionales) */}
-          <div className="form-row">
-            <div className="form-group col-6">
-              <label htmlFor="floor" className="checkout-label">
-                Piso <span className="optional">(Opcional)</span>
+          <div className={styles.formRow}>
+            <div className={`${styles.formGroup} ${styles.col6}`}>
+              <label htmlFor="floor" className={styles.checkoutLabel}>
+                Piso <span className={styles.optional}>(Opcional)</span>
               </label>
               <input
                 id="floor"
@@ -146,13 +146,13 @@ export default function CheckoutAddress({
                 value={formData.floor}
                 onChange={handleChange}
                 placeholder="Ej. 4"
-                className="checkout-input"
+                className={styles.checkoutInput}
               />
             </div>
 
-            <div className="form-group col-6">
-              <label htmlFor="apartment" className="checkout-label">
-                Depto <span className="optional">(Opcional)</span>
+            <div className={`${styles.formGroup} ${styles.col6}`}>
+              <label htmlFor="apartment" className={styles.checkoutLabel}>
+                Depto <span className={styles.optional}>(Opcional)</span>
               </label>
               <input
                 id="apartment"
@@ -161,23 +161,23 @@ export default function CheckoutAddress({
                 value={formData.apartment}
                 onChange={handleChange}
                 placeholder="Ej. B"
-                className="checkout-input"
+                className={styles.checkoutInput}
               />
             </div>
           </div>
 
           {/* Action Buttons: Volver & Siguiente */}
-          <div className="checkout-actions-row">
+          <div className={styles.checkoutActionsRow}>
             <button
               type="button"
-              className="btn-outline"
+              className={styles.btnOutline}
               onClick={onBack}
             >
               <ArrowLeft size={16} />
               <span>Volver</span>
             </button>
 
-            <button type="submit" className="btn-burgundy">
+            <button type="submit" className={styles.btnBurgundy}>
               <span>Siguiente</span>
               <ArrowRight size={16} />
             </button>

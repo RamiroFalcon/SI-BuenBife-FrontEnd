@@ -1,0 +1,232 @@
+.checkoutFlowContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Header outside the card: Shipping & Total info */
+.checkoutTopMetaInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.metaShipping {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.metaShipping strong {
+  color: var(--color-text-primary);
+}
+
+.metaTotal strong {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Centered White Card */
+.checkoutCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  padding: 2.25rem;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.checkoutCardHeader {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutCardTitle {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* Form Layout Elements */
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+}
+
+.col8 {
+  flex: 8;
+}
+
+.col4 {
+  flex: 4;
+}
+
+.col6 {
+  flex: 6;
+}
+
+.checkoutLabel {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+/* Styled Inputs */
+.checkoutInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.checkoutInput:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-primary-border);
+  box-shadow: 0 0 0 3px rgba(96, 16, 24, 0.08);
+}
+
+.checkoutInput::placeholder {
+  color: var(--color-text-muted);
+}
+
+.inputError {
+  border-color: #dc2626 !important;
+}
+
+.fieldErrorMsg {
+  font-size: 0.76rem;
+  color: #dc2626;
+}
+
+/* Checkbox container for 'Bis' */
+.checkoutCheckboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+  margin-top: 0.25rem;
+}
+
+.checkoutCheckboxInput {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Buttons and Actions */
+.checkoutActionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.btnBurgundy {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(96, 16, 24, 0.18);
+  border: 1px solid var(--color-primary);
+}
+
+.btnBurgundy:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(96, 16, 24, 0.25);
+}
+
+.btnOutline {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-light);
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.btnOutline:hover {
+  background-color: var(--color-bg);
+  border-color: var(--color-border-subtle);
+  color: var(--color-primary);
+}
+
+@media (max-width: 640px) {
+  .checkoutCard {
+    padding: 1.5rem;
+  }
+  .formRow {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .checkoutActionsRow {
+    flex-direction: column-reverse;
+  }
+  .btnBurgundy,
+  .btnOutline {
+    width: 100%;
+  }
+}

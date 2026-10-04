@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ArrowRight, ArrowLeft, Calendar, Clock } from 'lucide-react'
-import './CheckoutStyles.css'
+import styles from './CheckoutDateTime.module.css'
 
 export default function CheckoutDateTime({
   dateTimeData,
@@ -42,21 +42,21 @@ export default function CheckoutDateTime({
   }
 
   return (
-    <div className="checkout-flow-container">
+    <div className={styles.checkoutFlowContainer}>
       {/* Centered White Card */}
-      <div className="checkout-card">
-        <div className="checkout-card-header">
-          <h2 className="checkout-card-title">
+      <div className={styles.checkoutCard}>
+        <div className={styles.checkoutCardHeader}>
+          <h2 className={styles.checkoutCardTitle}>
             Seleccione fecha y hora de recepción del pedido
           </h2>
         </div>
 
-        <form onSubmit={handleSubmit} className="checkout-form">
+        <form onSubmit={handleSubmit} className={styles.checkoutForm}>
           {/* Dropdown 1: Fecha */}
-          <div className="form-group">
-            <label htmlFor="date" className="checkout-label">
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                <Calendar size={15} style={{ color: 'var(--primary-burgundy)' }} />
+          <div className={styles.formGroup}>
+            <label htmlFor="date" className={styles.checkoutLabel}>
+              <span className={styles.labelIconText}>
+                <Calendar size={15} className={styles.labelIcon} />
                 Fecha de entrega *
               </span>
             </label>
@@ -65,7 +65,7 @@ export default function CheckoutDateTime({
               name="date"
               value={formData.date}
               onChange={handleChange}
-              className="checkout-select"
+              className={styles.checkoutSelect}
               required
             >
               {availableDates.map((d) => (
@@ -77,10 +77,10 @@ export default function CheckoutDateTime({
           </div>
 
           {/* Dropdown 2: Rango Horario */}
-          <div className="form-group">
-            <label htmlFor="timeSlot" className="checkout-label">
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                <Clock size={15} style={{ color: 'var(--primary-burgundy)' }} />
+          <div className={styles.formGroup}>
+            <label htmlFor="timeSlot" className={styles.checkoutLabel}>
+              <span className={styles.labelIconText}>
+                <Clock size={15} className={styles.labelIcon} />
                 Rango horario *
               </span>
             </label>
@@ -89,7 +89,7 @@ export default function CheckoutDateTime({
               name="timeSlot"
               value={formData.timeSlot}
               onChange={handleChange}
-              className="checkout-select"
+              className={styles.checkoutSelect}
               required
             >
               {availableTimeSlots.map((ts) => (
@@ -101,17 +101,17 @@ export default function CheckoutDateTime({
           </div>
 
           {/* Action Buttons: Volver & Siguiente */}
-          <div className="checkout-actions-row">
+          <div className={styles.checkoutActionsRow}>
             <button
               type="button"
-              className="btn-outline"
+              className={styles.btnOutline}
               onClick={onBack}
             >
               <ArrowLeft size={16} />
               <span>Volver</span>
             </button>
 
-            <button type="submit" className="btn-burgundy">
+            <button type="submit" className={styles.btnBurgundy}>
               <span>Siguiente</span>
               <ArrowRight size={16} />
             </button>

@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductCard from './ProductCard'
 import { Sparkles, PackageOpen } from 'lucide-react'
-import './ProductGrid.css'
+import styles from './ProductGrid.module.css'
 
 export default function ProductGrid({
   products,
@@ -11,24 +11,24 @@ export default function ProductGrid({
   categoryTitle,
 }) {
   return (
-    <section className="product-grid-section">
+    <section className={styles.productGridSection}>
       {/* Grid Header */}
-      <div className="grid-header">
+      <div className={styles.gridHeader}>
         <div>
-          <div className="grid-badge">
+          <div className={styles.gridBadge}>
             <Sparkles size={14} />
             <span>Selección de Primera</span>
           </div>
-          <h1 className="grid-title">{categoryTitle}</h1>
+          <h1 className={styles.gridTitle}>{categoryTitle}</h1>
         </div>
-        <span className="grid-count">
+        <span className={styles.gridCount}>
           {products.length} {products.length === 1 ? 'producto' : 'productos'}
         </span>
       </div>
 
       {/* Grid List */}
       {products.length > 0 ? (
-        <div className="product-grid">
+        <div className={styles.productGrid}>
           {products.map((product) => (
             <ProductCard
               key={product.id}
@@ -40,10 +40,10 @@ export default function ProductGrid({
           ))}
         </div>
       ) : (
-        <div className="empty-grid">
-          <PackageOpen size={48} className="empty-icon" />
-          <h3 className="empty-title">No se encontraron productos</h3>
-          <p className="empty-desc">
+        <div className={styles.emptyGrid}>
+          <PackageOpen size={48} className={styles.emptyIcon} />
+          <h3 className={styles.emptyTitle}>No se encontraron productos</h3>
+          <p className={styles.emptyDesc}>
             Prueba seleccionando otra categoría o limpiando la barra de búsqueda.
           </p>
         </div>

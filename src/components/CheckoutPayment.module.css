@@ -1,0 +1,199 @@
+.checkoutFlowContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.checkoutCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  padding: 2.25rem;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.checkoutCardHeader {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutCardTitle {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.checkoutLabel {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.labelIconText {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.labelIcon {
+  color: var(--color-primary);
+}
+
+.checkoutSelect {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23601018' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.checkoutSelect:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-primary-border);
+  box-shadow: 0 0 0 3px rgba(96, 16, 24, 0.08);
+}
+
+/* Info Box */
+.checkoutInfoBox {
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary-border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  color: var(--color-primary);
+}
+
+.checkoutInfoIcon {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.checkoutInfoText {
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+/* Buttons and Actions */
+.checkoutActionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.btnBurgundy {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(96, 16, 24, 0.18);
+  border: 1px solid var(--color-primary);
+}
+
+.btnBurgundy:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(96, 16, 24, 0.25);
+}
+
+.btnBurgundy:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btnOutline {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-light);
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.btnOutline:hover {
+  background-color: var(--color-bg);
+  border-color: var(--color-border-subtle);
+  color: var(--color-primary);
+}
+
+/* Security Note */
+.checkoutSecurityNote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.checkoutSecurityIcon {
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .checkoutCard {
+    padding: 1.5rem;
+  }
+  .checkoutActionsRow {
+    flex-direction: column-reverse;
+  }
+  .btnBurgundy,
+  .btnOutline {
+    width: 100%;
+  }
+}
