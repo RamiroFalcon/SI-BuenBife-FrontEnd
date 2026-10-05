@@ -1,10 +1,14 @@
 import React, { useState, useMemo } from 'react'
 import Home from './pages/Home'
 import Checkout from './pages/Checkout'
+import EmployeeLayout from './pages/EmployeeLayout'
+import Dashboard from './pages/Dashboard'
 import { MOCK_PRODUCTS } from './services/productsData'
+import { UserCheck, ShoppingBag } from 'lucide-react'
 
 function App() {
-  const [currentView, setCurrentView] = useState('home') // 'home' | 'checkout'
+  const [currentView, setCurrentView] = useState('employee') // 'home' | 'checkout' | 'employee'
+  const [activeEmployeeTab, setActiveEmployeeTab] = useState('dashboard')
 
   // Cart with initial gourmet items so checkout can be experienced right away or modified
   const [cart, setCart] = useState({
@@ -62,9 +66,118 @@ function App() {
       .filter((item) => item.product !== undefined)
   }, [cart])
 
+  const renderEmployeeContent = () => {
+    if (activeEmployeeTab === 'dashboard') {
+      return <Dashboard onNavigate={(tabId) => setActiveEmployeeTab(tabId)} />
+    }
+
+    return (
+      <div
+        style={{
+          backgroundColor: 'var(--color-white)',
+          padding: '2.5rem',
+          borderRadius: 'var(--radius-md)',
+          border: '1px solid var(--color-border-subtle)',
+          boxShadow: 'var(--shadow-subtle)',
+          textAlign: 'center',
+          maxWidth: '800px',
+          margin: '0 auto',
+        }}
+      >
+        <h2 style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-primary)', marginBottom: '0.75rem' }}>
+          Módulo en Construcción
+        </h2>
+        <p style={{ color: 'var(--color-text-secondary)', marginBottom: '1.5rem' }}>
+          Has seleccionado: <strong>{activeEmployeeTab.toUpperCase()}</strong>. Este caso de uso administrativo se integrará en el siguiente paso.
+        </p>
+        <button
+          type="button"
+          onClick={() => setActiveEmployeeTab('dashboard')}
+          style={{
+            backgroundColor: 'var(--color-primary)',
+            color: 'var(--color-white)',
+            padding: '0.65rem 1.25rem',
+            borderRadius: 'var(--radius-sm)',
+            fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
+          Volver al Dashboard
+        </button>
+      </div>
+    )
+  }
+
   return (
     <div className="app-root">
-      {currentView === 'home' ? (
+      {/* Role Switcher floating badge for easy testing between Employee Portal & Customer Store */}
+      <div
+        style={{
+          position: 'fixed',
+          bottom: '16px',
+          right: '16px',
+          zIndex: 9999,
+          display: 'flex',
+          gap: '8px',
+          backgroundColor: 'var(--color-white)',
+          padding: '6px 10px',
+          borderRadius: 'var(--radius-pill)',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+          border: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <button
+          type="button"
+          onClick={() => setCurrentView('employee')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 12px',
+            borderRadius: 'var(--radius-pill)',
+            fontSize: '0.78rem',
+            fontWeight: 600,
+            backgroundColor: currentView === 'employee' ? 'var(--color-primary)' : 'transparent',
+            color: currentView === 'employee' ? 'var(--color-white)' : 'var(--color-text-secondary)',
+            cursor: 'pointer',
+            transition: 'all 0.2s',
+          }}
+        >
+          <UserCheck size={14} />
+          <span>Portal Empleados</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setCurrentView('home')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 12px',
+            borderRadius: 'var(--radius-pill)',
+            fontSize: '0.78rem',
+            fontWeight: 600,
+            backgroundColor: currentView !== 'employee' ? 'var(--color-primary)' : 'transparent',
+            color: currentView !== 'employee' ? 'var(--color-white)' : 'var(--color-text-secondary)',
+            cursor: 'pointer',
+            transition: 'all 0.2s',
+          }}
+        >
+          <ShoppingBag size={14} />
+          <span>Tienda Cliente</span>
+        </button>
+      </div>
+
+      {currentView === 'employee' ? (
+        <EmployeeLayout
+          activeTab={activeEmployeeTab}
+          onSelectTab={setActiveEmployeeTab}
+          onLogout={() => setCurrentView('home')}
+          user={{ name: 'John Doe', role: 'Carnicero' }}
+        >
+          {renderEmployeeContent()}
+        </EmployeeLayout>
+      ) : currentView === 'home' ? (
         <Home
           cart={cart}
           setCart={setCart}
