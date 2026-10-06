@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { FileText, ChevronLeft, ChevronRight, CheckCircle2, FileCheck } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { FileText, ChevronLeft, ChevronRight, FileCheck } from 'lucide-react'
 import styles from './GenerarRemitoListado.module.css'
 
 export default function GenerarRemitoListado() {
+  const navigate = useNavigate()
   // Mock sales data
   const initialSales = [
     {
@@ -39,8 +41,6 @@ export default function GenerarRemitoListado() {
 
   // Pre-selected row 3 as requested in GUI02 specifications (#VT-2023-0895)
   const [selectedIds, setSelectedIds] = useState(['#VT-2023-0895'])
-  const [successMessage, setSuccessMessage] = useState(null)
-  const [isProcessing, setIsProcessing] = useState(false)
 
   // Toggle single item selection
   const handleToggleSelect = (id) => {
@@ -62,14 +62,8 @@ export default function GenerarRemitoListado() {
   const handleGenerateRemitos = () => {
     if (selectedIds.length === 0) return
 
-    setIsProcessing(true)
-    setTimeout(() => {
-      setIsProcessing(false)
-      setSuccessMessage(
-        `Se han generado exitosamente ${selectedIds.length} remito(s) para los pedidos seleccionados.`
-      )
-      setTimeout(() => setSuccessMessage(null), 5000)
-    }, 1000)
+    const saleId = selectedIds[0].replace(/^#/, '')
+    navigate(`/empleados/remitos/detalle/${encodeURIComponent(saleId)}`)
   }
 
   const isAllSelected = selectedIds.length === initialSales.length && initialSales.length > 0
@@ -90,23 +84,15 @@ export default function GenerarRemitoListado() {
         <button
           type="button"
           className={styles.actionButton}
-          disabled={!isButtonEnabled || isProcessing}
+          disabled={!isButtonEnabled}
           onClick={handleGenerateRemitos}
         >
           <FileCheck size={18} />
           <span>
-            {isProcessing ? 'Generando Remitos...' : 'GENERAR REMITOS SELECCIONADOS'}
+            GENERAR REMITOS SELECCIONADOS
           </span>
         </button>
       </div>
-
-      {/* Success Feedback Notification */}
-      {successMessage && (
-        <div className={styles.successBanner}>
-          <CheckCircle2 size={20} className={styles.successIcon} />
-          <span>{successMessage}</span>
-        </div>
-      )}
 
       {/* Central Table Card */}
       <div className={styles.tableCard}>
@@ -137,7 +123,7 @@ export default function GenerarRemitoListado() {
                   <tr
                     key={sale.id}
                     className={`${styles.tableRow} ${isSelected ? styles.selected : ''}`}
-                    onClick={() => handleToggleSelect(sale.id)}
+                    onClick={() => navigate(`/empleados/remitos/detalle/${encodeURIComponent(sale.id.replace(/^#/, ''))}`)}
                   >
                     <td
                       className={styles.checkboxCell}

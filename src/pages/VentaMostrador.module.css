@@ -1,0 +1,562 @@
+.page {
+  display: flex;
+  width: 100%;
+  max-width: 1500px;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin: 0 auto;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.eyebrow {
+  margin-bottom: 0.3rem;
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.title {
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin-top: 0.35rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.saleBadge {
+  padding: 0.4rem 0.7rem;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary-border);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.posGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(320px, 3fr);
+  align-items: start;
+  gap: 1.35rem;
+}
+
+.catalogSection {
+  min-width: 0;
+}
+
+.searchBox {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0 1rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-subtle);
+}
+
+.searchBox:focus-within {
+  border-color: var(--color-primary-border);
+  box-shadow: 0 0 0 3px rgba(96, 16, 24, 0.08);
+}
+
+.searchBox input {
+  width: 100%;
+  min-width: 0;
+  color: var(--color-text-primary);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.searchBox input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.catalogHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 1.3rem 0 0.85rem;
+}
+
+.sectionTitle {
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.productCount {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.85rem;
+}
+
+.productCard {
+  display: flex;
+  min-width: 0;
+  min-height: 185px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  color: inherit;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  text-align: left;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.productCard:hover:not(:disabled) {
+  border-color: var(--color-primary-border);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.productCard:disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+}
+
+.productCategory {
+  margin-bottom: 0.55rem;
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.productName {
+  min-height: 2.5rem;
+  color: var(--color-text-primary);
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.productPrice {
+  margin-top: 0.65rem;
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.productPrice small {
+  color: var(--color-text-muted);
+  font-size: 0.73rem;
+  font-weight: 500;
+}
+
+.productStock {
+  margin-top: 0.25rem;
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+}
+
+.addProduct {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: auto;
+  padding-top: 0.65rem;
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.emptyCatalog {
+  padding: 2rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-white);
+  border: 1px dashed var(--color-border-light);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.ticket {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  max-height: calc(100vh - 5rem);
+  min-height: 550px;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-panel);
+}
+
+.ticketHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 1.1rem 1.2rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.ticketTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.ticketIcon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  border-radius: var(--radius-sm);
+}
+
+.ticketTitle {
+  color: var(--color-text-primary);
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.ticketSubtitle {
+  margin-top: 0.15rem;
+  color: var(--color-text-muted);
+  font-size: 0.73rem;
+}
+
+.ticketItemCount {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  border-radius: 50%;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.ticketItems {
+  display: flex;
+  min-height: 120px;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+  padding: 0.9rem 1rem;
+}
+
+.ticketItem {
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.ticketItemTop,
+.ticketItemBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.ticketItemInfo {
+  min-width: 0;
+}
+
+.ticketItemInfo h3 {
+  overflow: hidden;
+  color: var(--color-text-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ticketItemInfo > span {
+  display: block;
+  margin-top: 0.18rem;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+}
+
+.removeButton {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  color: var(--color-text-muted);
+  border-radius: 6px;
+}
+
+.removeButton:hover {
+  color: #a12b2b;
+  background-color: #fff1f1;
+}
+
+.ticketItemBottom {
+  margin-top: 0.65rem;
+}
+
+.quantityControls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.quantityControls button {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  color: var(--color-primary);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: 6px;
+}
+
+.quantityControls button:hover:not(:disabled) {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-border);
+}
+
+.quantityControls button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.quantityControls > span {
+  min-width: 52px;
+  color: var(--color-text-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.itemSubtotal {
+  color: var(--color-text-primary);
+  font-size: 0.83rem;
+  white-space: nowrap;
+}
+
+.emptyTicket {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.emptyTicket svg {
+  margin-bottom: 0.35rem;
+  color: var(--color-primary);
+}
+
+.emptyTicket p {
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.emptyTicket span {
+  max-width: 210px;
+  font-size: 0.75rem;
+}
+
+.ticketSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem 1.1rem 1.1rem;
+  background-color: #fffefd;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.summaryLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+}
+
+.summaryLine strong {
+  color: var(--color-text-primary);
+  font-size: 0.88rem;
+}
+
+.discountField,
+.paymentField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--color-text-secondary);
+  font-size: 0.78rem;
+}
+
+.percentInputWrap {
+  display: inline-flex;
+  width: 76px;
+  align-items: center;
+  padding-right: 0.5rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 6px;
+}
+
+.percentInputWrap input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.4rem 0.25rem 0.4rem 0.5rem;
+  color: var(--color-text-primary);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  text-align: right;
+}
+
+.finalTotal {
+  margin-top: 0.1rem;
+  padding-top: 0.75rem;
+  color: var(--color-text-primary);
+  border-top: 1px dashed var(--color-border-light);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.summaryLine.finalTotal strong {
+  color: var(--color-primary);
+  font-size: 1.25rem;
+}
+
+.paymentField {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.15rem;
+  font-weight: 600;
+}
+
+.paymentField select {
+  width: 100%;
+  min-height: 40px;
+  padding: 0.5rem 0.65rem;
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.processButton {
+  min-height: 46px;
+  margin-top: 0.15rem;
+  padding: 0.7rem 0.85rem;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.79rem;
+  font-weight: 700;
+  transition: background-color 0.18s ease;
+}
+
+.processButton:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.processButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.productCard:focus-visible,
+.removeButton:focus-visible,
+.quantityControls button:focus-visible,
+.processButton:focus-visible,
+.searchBox input:focus-visible,
+.paymentField select:focus-visible,
+.percentInputWrap:focus-within {
+  outline: 3px solid var(--color-primary-border);
+  outline-offset: 2px;
+}
+
+@media (max-width: 980px) {
+  .posGrid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+    gap: 1rem;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .posGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket {
+    position: static;
+    max-height: none;
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .productCard {
+    min-height: 175px;
+    padding: 0.75rem;
+  }
+
+  .ticketSummary {
+    padding-right: 0.85rem;
+    padding-left: 0.85rem;
+  }
+}

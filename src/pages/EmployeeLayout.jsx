@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+﻿import React, { useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import EmployeeSidebar from '../components/EmployeeSidebar'
 import EmployeeTopbar from '../components/EmployeeTopbar'
 import styles from './EmployeeLayout.module.css'
@@ -11,30 +12,25 @@ export default function EmployeeLayout({
   user = { name: 'John Doe', role: 'Carnicero' },
 }) {
   const [searchQuery, setSearchQuery] = useState('')
+  const { pathname } = useLocation()
+  const currentTab = pathname.includes('/remitos')
+    ? 'remito'
+    : pathname.includes('/entregas')
+      ? 'entregas'
+    : pathname.endsWith('/dashboard')
+      ? 'dashboard'
+      : pathname.endsWith('/caja')
+        ? 'caja'
+        : pathname.endsWith('/mostrador')
+          ? 'mostrador'
+          : activeTab
 
   return (
     <div className={styles.layoutWrapper}>
-      {/* Left Fixed Navigation Sidebar (250px) */}
-      <EmployeeSidebar
-        activeTab={activeTab}
-        onSelectTab={onSelectTab}
-        onLogout={onLogout}
-        user={user}
-      />
-
-      {/* Right Main Column */}
+      <EmployeeSidebar activeTab={currentTab} onSelectTab={onSelectTab} onLogout={onLogout} user={user} />
       <div className={styles.mainColumn}>
-        {/* Topbar with search and notifications */}
-        <EmployeeTopbar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          notificationCount={3}
-        />
-
-        {/* Content Area for Business Cases (Venta, Entregas, Remitos, Cierre de caja) */}
-        <main className={styles.contentArea}>
-          {children}
-        </main>
+        <EmployeeTopbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} notificationCount={3} />
+        <main className={styles.contentArea}>{children ?? <Outlet />}</main>
       </div>
     </div>
   )

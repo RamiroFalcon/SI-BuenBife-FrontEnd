@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   ArrowLeft,
   Building2,
@@ -27,6 +28,7 @@ export default function GenerarRemitoDetalle({
   },
   onBackToList = () => {},
 }) {
+  const navigate = useNavigate()
   const [remitoResult, setRemitoResult] = useState(null)
   const [isGenerating, setIsGenerating] = useState(false)
 
@@ -54,6 +56,9 @@ export default function GenerarRemitoDetalle({
         timestamp: `${formattedDate} ${formattedTime} hs`,
         issuedBy: 'Operador Mostrador / Carnicería',
       })
+      navigate('/empleados/remitos/exito', {
+        state: { saleId: sale.id.replace(/^#/, '') },
+      })
     }, 850)
   }
 
@@ -64,7 +69,10 @@ export default function GenerarRemitoDetalle({
         <button
           type="button"
           className={styles.backButton}
-          onClick={onBackToList}
+          onClick={() => {
+            onBackToList()
+            navigate('/empleados/remitos')
+          }}
           title="Regresar a ventas pendientes de remito"
         >
           <ArrowLeft size={16} />
