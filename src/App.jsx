@@ -3,12 +3,14 @@ import Home from './pages/Home'
 import Checkout from './pages/Checkout'
 import EmployeeLayout from './pages/EmployeeLayout'
 import Dashboard from './pages/Dashboard'
+import CierreCaja from './pages/CierreCaja'
+import GenerarRemitoListado from './pages/GenerarRemitoListado'
 import { MOCK_PRODUCTS } from './services/productsData'
 import { UserCheck, ShoppingBag } from 'lucide-react'
 
 function App() {
   const [currentView, setCurrentView] = useState('employee') // 'home' | 'checkout' | 'employee'
-  const [activeEmployeeTab, setActiveEmployeeTab] = useState('dashboard')
+  const [activeEmployeeTab, setActiveEmployeeTab] = useState('remito') // Initialized to 'remito' to showcase GenerarRemitoListado
 
   // Cart with initial gourmet items so checkout can be experienced right away or modified
   const [cart, setCart] = useState({
@@ -69,6 +71,14 @@ function App() {
   const renderEmployeeContent = () => {
     if (activeEmployeeTab === 'dashboard') {
       return <Dashboard onNavigate={(tabId) => setActiveEmployeeTab(tabId)} />
+    }
+
+    if (activeEmployeeTab === 'caja') {
+      return <CierreCaja />
+    }
+
+    if (activeEmployeeTab === 'remito') {
+      return <GenerarRemitoListado />
     }
 
     return (

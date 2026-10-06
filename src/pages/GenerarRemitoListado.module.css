@@ -1,0 +1,266 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Header & Action Row */
+.headerRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+/* Top Action Button: Generar Remitos Seleccionados */
+.actionButton {
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Disabled State */
+.actionButton:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  border: 1px solid #d1d5db;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Enabled State */
+.actionButton:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 4px 14px rgba(96, 16, 24, 0.22);
+  cursor: pointer;
+}
+
+.actionButton:not(:disabled):hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(96, 16, 24, 0.3);
+}
+
+/* Success Banner */
+.successBanner {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #065f46;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.successIcon {
+  color: #059669;
+  flex-shrink: 0;
+}
+
+/* Central Table Card */
+.tableCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tableHeadRow {
+  background-color: #faf8f5;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.tableHeadCell {
+  padding: 1rem 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  user-select: none;
+}
+
+.checkboxCell {
+  width: 50px;
+  text-align: center;
+  padding: 1rem 0.75rem;
+}
+
+.checkboxInput {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.tableRow {
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+}
+
+.tableRow:hover {
+  background-color: #fcf9f7;
+}
+
+/* Selected row style */
+.tableRow.selected {
+  background-color: var(--color-primary-light);
+}
+
+.tableCell {
+  padding: 1.1rem 1.25rem;
+  font-size: 0.92rem;
+  color: var(--color-text-primary);
+  vertical-align: middle;
+}
+
+.saleId {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+  letter-spacing: -0.2px;
+}
+
+.dateText {
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+}
+
+.clientText {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.amountText {
+  font-weight: 700;
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+}
+
+/* Pagination Footer */
+.paginationRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.paginationInfo {
+  font-weight: 500;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border-light);
+  background-color: var(--color-white);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pageButton:hover:not(:disabled) {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-border);
+  color: var(--color-primary);
+}
+
+.pageButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageCurrent {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .actionButton {
+    width: 100%;
+    justify-content: center;
+  }
+  .paginationRow {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+}
