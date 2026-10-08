@@ -1,6 +1,8 @@
 ﻿import React, { useMemo, useState } from 'react'
 import { Navigate, Outlet, Route, Routes, useNavigate, useParams } from 'react-router-dom'
+import Inicio from './pages/Inicio'
 import Home from './pages/Home'
+import Carrito from './pages/Carrito'
 import Checkout from './pages/Checkout'
 import EmployeeLayout from './pages/EmployeeLayout'
 import Dashboard from './pages/Dashboard'
@@ -13,12 +15,11 @@ import GenerarRemitoListado from './pages/GenerarRemitoListado'
 import GenerarRemitoDetalle from './pages/GenerarRemitoDetalle'
 import RemitoGenerado from './pages/RemitoGenerado'
 import { MOCK_PRODUCTS } from './services/productsData'
-import { UserCheck, ShoppingBag } from 'lucide-react'
 
 const defaultSale = {
   id: '#VT-2023-0895',
   client: 'Hotel Boutique Alvear',
-  deliveryAddress: 'Av. Alvear 1891',
+  deliveryAddress: 'Bv. Oroño 1150',
   saleDate: '15 Oct, 2023 11:45',
   items: [
     { id: 1, name: 'Ojo de Bife (Corte entero)', quantity: '15 kg' },
@@ -51,7 +52,6 @@ function EmployeeModulePlaceholder({ title }) {
 
 function App() {
   const navigate = useNavigate()
-  const [currentView, setCurrentView] = useState('employee')
   const [cart, setCart] = useState({ 1: 2, 3: 1 })
 
   const handleIncrement = (productId) => {
@@ -96,73 +96,47 @@ function App() {
     [cart],
   )
 
-  const renderFallback = () => {
-    if (currentView === 'home') {
-      return <Home cart={cart} setCart={setCart} onGoToCheckout={() => setCurrentView('checkout')} />
-    }
-    if (currentView === 'checkout') {
-      return (
-        <Checkout
-          cartItems={cartItems}
-          onIncrement={handleIncrement}
-          onDecrement={handleDecrement}
-          onRemove={handleRemove}
-          onBackToShop={() => setCurrentView('home')}
-          onClearCart={() => setCart({})}
-        />
-      )
-    }
-    return <Navigate to="/empleados/remitos" replace />
-  }
-
   return (
     <div className="app-root">
-      <div
-        style={{
-          position: 'fixed', bottom: '16px', right: '16px', zIndex: 9999,
-          display: 'flex', gap: '8px', backgroundColor: 'var(--color-white)',
-          padding: '6px 10px', borderRadius: 'var(--radius-pill)',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
-          border: '1px solid var(--color-border-subtle)',
-        }}
-      >
-        <button
-          type="button"
-          onClick={() => { setCurrentView('employee'); navigate('/empleados/remitos') }}
-          style={{
-            display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 12px',
-            borderRadius: 'var(--radius-pill)', fontSize: '0.78rem', fontWeight: 600,
-            backgroundColor: currentView === 'employee' ? 'var(--color-primary)' : 'transparent',
-            color: currentView === 'employee' ? 'var(--color-white)' : 'var(--color-text-secondary)',
-            cursor: 'pointer',
-          }}
-        >
-          <UserCheck size={14} />
-          <span>Portal Empleados</span>
-        </button>
-        <button
-          type="button"
-          onClick={() => { setCurrentView('home'); navigate('/') }}
-          style={{
-            display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 12px',
-            borderRadius: 'var(--radius-pill)', fontSize: '0.78rem', fontWeight: 600,
-            backgroundColor: currentView !== 'employee' ? 'var(--color-primary)' : 'transparent',
-            color: currentView !== 'employee' ? 'var(--color-white)' : 'var(--color-text-secondary)',
-            cursor: 'pointer',
-          }}
-        >
-          <ShoppingBag size={14} />
-          <span>Tienda Cliente</span>
-        </button>
-      </div>
-
       <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route
+          path="/tienda"
+          element={<Home cart={cart} setCart={setCart} onGoToCheckout={() => navigate('/tienda/carrito')} />}
+        />
+        <Route
+          path="/tienda/carrito"
+          element={(
+            <Carrito
+              cartItems={cartItems}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
+              onRemove={handleRemove}
+              onBack={() => navigate('/tienda')}
+              onNext={() => navigate('/tienda/checkout')}
+            />
+          )}
+        />
+        <Route
+          path="/tienda/checkout"
+          element={(
+            <Checkout
+              cartItems={cartItems}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
+              onRemove={handleRemove}
+              onBackToShop={() => navigate('/tienda')}
+              onBackToCart={() => navigate('/tienda/carrito')}
+              onClearCart={() => setCart({})}
+            />
+          )}
+        />
         <Route
           path="/empleados"
           element={(
             <EmployeeLayout
               activeTab="remito"
-              onLogout={() => { setCurrentView('home'); navigate('/') }}
+              onLogout={() => navigate('/')}
               user={{ name: 'John Doe', role: 'Carnicero' }}
             >
               <Outlet />
@@ -215,7 +189,7 @@ function App() {
           />
           <Route path="caja" element={<CierreCaja />} />
         </Route>
-        <Route path="*" element={renderFallback()} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   )

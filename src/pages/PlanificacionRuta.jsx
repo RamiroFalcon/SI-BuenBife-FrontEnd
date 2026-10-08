@@ -15,19 +15,19 @@ const routeStops = [
   {
     id: '#ORD-0921',
     customer: 'Restaurante La Parrilla',
-    address: 'Av. Libertador 1234',
+    address: 'Av. Pellegrini 1234',
     weight: '85kg',
   },
   {
     id: '#ORD-0922',
     customer: 'Familia Martínez',
-    address: 'Cabildo 2450',
+    address: 'Bv. Oroño 2450',
     weight: '110kg',
   },
   {
     id: '#ORD-0923',
     customer: 'Mercado Belgrano',
-    address: 'Juramento 2100',
+    address: 'Av. Francia 2100',
     weight: '225kg',
   },
 ]

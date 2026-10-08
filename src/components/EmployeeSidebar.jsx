@@ -1,5 +1,5 @@
 ﻿import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   LayoutDashboard,
   Store,
@@ -29,10 +29,10 @@ export default function EmployeeSidebar({
   return (
     <aside className={styles.sidebar}>
       <div>
-        <div className={styles.logoWrapper}>
+        <Link to="/" className={styles.logoWrapper} title="Ir al inicio">
           <span className={styles.logoTitle}>BuenBife</span>
           <span className={styles.logoBadge}>Gestión de Personal</span>
-        </div>
+        </Link>
         <nav className={styles.navigation}>
           {menuItems.map((item) => {
             const Icon = item.icon

@@ -18,7 +18,7 @@ export default function GenerarRemitoDetalle({
   sale = {
     id: '#VT-2023-0895',
     client: 'Hotel Boutique Alvear',
-    deliveryAddress: 'Av. Alvear 1891',
+    deliveryAddress: 'Bv. Oroño 1150',
     saleDate: '15 Oct, 2023 11:45',
     items: [
       { id: 1, name: 'Ojo de Bife (Corte entero)', quantity: '15 kg' },

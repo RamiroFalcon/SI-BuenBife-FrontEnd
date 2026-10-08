@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Search, User, ShoppingBag } from 'lucide-react'
 import styles from './Navbar.module.css'
 
@@ -7,10 +8,10 @@ export default function Navbar({ searchQuery, setSearchQuery, cartCount = 0 }) {
     <header className={styles.navbar}>
       <div className={styles.navbarContainer}>
         {/* Brand Logo */}
-        <div className={styles.navbarBrand}>
+        <Link to="/" className={styles.navbarBrand} title="Ir al inicio">
           <span className={styles.navbarLogoText}>BuenBife</span>
           <span className={styles.navbarTagline}>Carnicería & Selección</span>
-        </div>
+        </Link>
 
         {/* Right Action Icons */}
         <div className={styles.navbarActions}>

@@ -95,7 +95,7 @@ export default function CheckoutAddress({
                 name="street"
                 value={formData.street}
                 onChange={handleChange}
-                placeholder="Ej. Av. del Libertador"
+                placeholder="Ej. Bv. Oroño"
                 className={`${styles.checkoutInput} ${errors.street ? styles.inputError : ''}`}
                 autoComplete="street-address"
               />

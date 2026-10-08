@@ -13,6 +13,7 @@ export default function Checkout({
   onDecrement,
   onRemove,
   onBackToShop,
+  onBackToCart,
   onClearCart,
 }) {
   const [currentStep, setCurrentStep] = useState(1) // 1: Domicilio, 2: Fecha/Hora, 3: Pago, 4: Éxito
@@ -46,7 +47,7 @@ export default function Checkout({
 
   // Navigation handlers
   const handleAddressNext = () => setCurrentStep(2)
-  const handleAddressBack = () => onBackToShop()
+  const handleAddressBack = () => (onBackToCart ? onBackToCart() : onBackToShop())
 
   const handleDateTimeNext = () => setCurrentStep(3)
   const handleDateTimeBack = () => setCurrentStep(1)

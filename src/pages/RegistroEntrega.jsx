@@ -64,7 +64,7 @@ export default function RegistroEntrega({
               </div>
               <div>
                 <dt>Dirección</dt>
-                <dd className={styles.iconValue}><MapPin size={15} aria-hidden="true" /> Av. Libertador 4500, Palermo</dd>
+                <dd className={styles.iconValue}><MapPin size={15} aria-hidden="true" /> Av. Pellegrini 1500, Rosario</dd>
               </div>
               <div>
                 <dt>Contacto</dt>

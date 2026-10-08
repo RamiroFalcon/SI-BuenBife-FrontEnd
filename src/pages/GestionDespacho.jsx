@@ -3,23 +3,23 @@ import { Clock3, MapPin, Plus, Route } from 'lucide-react'
 import styles from './GestionDespacho.module.css'
 
 const deliveryZones = [
-  { id: 'norte', label: 'Norte (Palermo, Belgrano)' },
-  { id: 'centro', label: 'Centro (Recoleta, Retiro)' },
-  { id: 'sur', label: 'Sur (San Telmo, Barracas)' },
+  { id: 'norte', label: 'Norte (Alberdi, Arroyito)' },
+  { id: 'centro', label: 'Centro (Centro, Pichincha)' },
+  { id: 'sur', label: 'Sur (Saladillo, Tablada)' },
 ]
 
 const orders = [
   {
     id: '#ORD-2891',
     customer: 'Familia Rossi',
-    address: 'Av. Libertador 1234, 5B - Zona Norte',
+    address: 'Av. Alberdi 1234, 5B - Zona Norte',
     schedule: '10:00 - 13:00',
     zone: 'norte',
   },
   {
     id: '#ORD-2892',
     customer: 'Restaurante El Fuego',
-    address: 'Defensa 850 - Zona Sur',
+    address: 'Av. San Martín 4850 - Zona Sur',
     schedule: '14:00 - 16:00 (Prioridad)',
     zone: 'sur',
     priority: true,
@@ -27,7 +27,7 @@ const orders = [
   {
     id: '#ORD-2893',
     customer: 'M. González',
-    address: 'Juramento 2100, PB A - Zona Norte',
+    address: 'Av. Génova 1450, PB A - Zona Norte',
     schedule: 'Cualquier horario',
     zone: 'norte',
   },
